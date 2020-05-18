@@ -8,7 +8,7 @@ class BookSearch extends Component {
           <div className="search-books-bar">
             <button
               className="close-search"
-              onClick={() => this.setState({ showSearchPage: false })}
+              //   onClick={() => this.setState({ showSearchPage: false })}
             >
               Close
             </button>

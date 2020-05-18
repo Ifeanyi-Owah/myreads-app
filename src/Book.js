@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Book extends Component {
   render() {
-    const { title, author, avatarURL } = this.props;
+    const { title, authors, imageLink } = this.props;
     return (
       <li>
         <div className="book">
@@ -12,7 +12,7 @@ class Book extends Component {
               style={{
                 width: 128,
                 height: 193,
-                backgroundImage: `url(${avatarURL})`,
+                backgroundImage: `url(${imageLink})`,
               }}
             ></div>
             <div className="book-shelf-changer">
@@ -28,7 +28,16 @@ class Book extends Component {
             </div>
           </div>
           <div className="book-title">{title}</div>
-          <div className="book-authors">{author}</div>
+          <div className="book-authors">
+            {authors.map((author) => {
+              return (
+                <p key={title}>
+                  <span>{author}</span>
+                  <br />
+                </p>
+              );
+            })}
+          </div>
         </div>
       </li>
     );

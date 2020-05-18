@@ -8,18 +8,22 @@ import PropTypes from "prop-types";
 
 class App extends Component {
   static defaultProps = {
-    shelfs: ["Currently Reading", "Want to Read", "Read"],
+    shelfs: [
+      { id: "1", shelf: "Currently Reading" },
+      { id: "2", shelf: "Want to Read" },
+      { id: "3", shelf: "Read" },
+    ],
   };
 
   static propTypes = { shelfs: PropTypes.array.isRequired };
 
   state = {
-    showSearchPage: false,
+    // showSearchPage: false,
   };
 
   render() {
     const { shelfs } = this.props;
-    const { showSearchPage } = this.state;
+    // const { showSearchPage } = this.state;
     return (
       <div className="app">
         <Switch>
@@ -34,8 +38,8 @@ class App extends Component {
                     <h1>MyReads</h1>
                   </div>
                 </div>
-                {shelfs.map((shelf) => (
-                  <BookShelf shelf={shelf} />
+                {shelfs.map((book) => (
+                  <BookShelf key={book.id} shelf={book.shelf} />
                 ))}
                 <div className="open-search">
                   <button>Add a book</button>
@@ -47,32 +51,6 @@ class App extends Component {
       </div>
     );
   }
-
-  // render() {
-  //   const { shelfs } = this.props;
-  //   const { showSearchPage } = this.state;
-  //   return (
-  //     <div className="app">
-  //       {showSearchPage ? (
-  //         <BookSearch />
-  //       ) : (
-  //         <div>
-  //           <div className="list-books">
-  //             <div className="list-books-title">
-  //               <h1>MyReads</h1>
-  //             </div>
-  //           </div>
-  //           {shelfs.map((shelf) => (
-  //             <BookShelf shelf={shelf} />
-  //           ))}
-  //           <div className="open-search">
-  //             <button>Add a book</button>
-  //           </div>
-  //         </div>
-  //       )}
-  //     </div>
-  //   );
-  // }
 }
 
 export default App;
