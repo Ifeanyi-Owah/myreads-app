@@ -48,7 +48,7 @@ class BookShelf extends Component {
                   title={book.title}
                   author={book.author}
                   avatarURL={book.avatarURL}
-                  shelf={book.bookShelf}
+                  bookShelf={book.bookShelf}
                 />
               ))}
             </ol>

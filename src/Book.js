@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Book extends Component {
   render() {
-    const { title, author, avatarURL, shelf } = this.props;
+    const { title, author, avatarURL } = this.props;
     return (
       <li>
         <div className="book">
