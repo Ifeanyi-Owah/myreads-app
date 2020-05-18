@@ -5,13 +5,27 @@ import BookShelf from "./BookShelf";
 import PropTypes from "prop-types";
 
 const App = (props) => {
+  const { shelfs } = props;
   return (
-    <div className="App">
-      <BookShelf />
+    <div className="app">
+      <div className="list-books">
+        <div className="list-books-title">
+          <h1>MyReads</h1>
+        </div>
+      </div>
+      {shelfs.map((shelf) => (
+        <BookShelf shelf={shelf} />
+      ))}
     </div>
   );
 };
 
-App.propTypes = {};
+App.defaultProps = {
+  shelfs: ["Currently Reading", "Want to Read", "Read"],
+};
+
+App.propTypes = {
+  shelfs: PropTypes.array.isRequired,
+};
 
 export default App;
