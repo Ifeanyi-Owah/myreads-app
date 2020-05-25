@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-// import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from "./BooksAPI";
 import "./App.css";
 import BookShelf from "./BookShelf";
 import BookSearch from "./BookSearch";
@@ -8,22 +8,36 @@ import PropTypes from "prop-types";
 
 class App extends Component {
   static defaultProps = {
-    shelfs: [
-      { id: "1", shelf: "Currently Reading" },
-      { id: "2", shelf: "Want to Read" },
-      { id: "3", shelf: "Read" },
-    ],
+    shelfs: ["Currently Reading", "Want to Read", "Read"],
   };
 
   static propTypes = { shelfs: PropTypes.array.isRequired };
 
   state = {
-    // showSearchPage: false,
+    currentlyReading: [],
+    wantToRead: [],
+    read: [],
   };
 
+  componentDidMount() {
+    BooksAPI.getAll().then((books) => {
+      console.log(books);
+      this.setState(() => {
+        return {
+          currentlyReading: BooksAPI.assignBookToShelf(
+            books,
+            "currentlyReading"
+          ),
+          wantToRead: BooksAPI.assignBookToShelf(books, "wantToRead"),
+          read: BooksAPI.assignBookToShelf(books, "read"),
+        };
+      });
+    });
+  }
+
   render() {
+    const { currentlyReading, wantToRead, read } = this.state;
     const { shelfs } = this.props;
-    // const { showSearchPage } = this.state;
     return (
       <div className="app">
         <Switch>
@@ -38,9 +52,9 @@ class App extends Component {
                     <h1>MyReads</h1>
                   </div>
                 </div>
-                {shelfs.map((book) => (
-                  <BookShelf key={book.id} shelf={book.shelf} />
-                ))}
+                <BookShelf books={currentlyReading} shelf={shelfs[0]} />
+                <BookShelf books={wantToRead} shelf={shelfs[1]} />
+                <BookShelf books={read} shelf={shelfs[2]} />
                 <div className="open-search">
                   <button>Add a book</button>
                 </div>

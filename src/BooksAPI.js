@@ -40,3 +40,9 @@ export const search = (query) =>
   })
     .then((res) => res.json())
     .then((data) => data.books);
+
+export const assignBookToShelf = (arr, shelf) => {
+  return arr.filter((book) => {
+    return book.shelf === shelf;
+  });
+};

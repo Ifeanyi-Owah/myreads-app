@@ -3,6 +3,7 @@ import React, { Component } from "react";
 class Book extends Component {
   render() {
     const { title, authors, imageLink } = this.props;
+    // console.log(shelf);
     return (
       <li>
         <div className="book">
@@ -10,7 +11,7 @@ class Book extends Component {
             <div
               className="book-cover"
               style={{
-                width: 128,
+                width: 130,
                 height: 193,
                 backgroundImage: `url(${imageLink})`,
               }}

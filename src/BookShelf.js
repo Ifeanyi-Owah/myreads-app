@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Book from "./Book";
-import * as BooksAPI from "./BooksAPI";
 import PropTypes from "prop-types";
 
 class BookShelf extends Component {
@@ -8,32 +7,9 @@ class BookShelf extends Component {
     shelf: PropTypes.string.isRequired,
   };
 
-  state = {
-    books: [],
-  };
-
-  componentDidMount() {
-    BooksAPI.getAll().then((books) => {
-      console.log(books);
-      this.setState(() => {
-        return {
-          books: books.map((book) => {
-            return {
-              id: book.id,
-              title: book.title,
-              authors: book.authors,
-              imageLink: book.imageLinks.thumbnail,
-              shelf: book.shelf,
-            };
-          }),
-        };
-      });
-    });
-  }
-
   render() {
-    const { shelf } = this.props;
-    const { books } = this.state;
+    const { shelf, books } = this.props;
+    console.log(books);
     return (
       <div className="list-books-content">
         <div>
@@ -46,8 +22,8 @@ class BookShelf extends Component {
                   key={book.id}
                   title={book.title}
                   authors={[book.authors]}
-                  imageLink={book.imageLink}
-                  bookShelf={book.shelf}
+                  imageLink={book.imageLinks.thumbnail}
+                  shelf={book.shelf}
                 />
               ))}
             </ol>

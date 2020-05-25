@@ -44,6 +44,7 @@ body,
 
 .bookshelf-title {
   border-bottom: 1px solid #dedede;
+  padding-left: 10px;
 }
 
 .bookshelf-books {
