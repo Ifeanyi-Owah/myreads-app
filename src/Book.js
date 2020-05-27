@@ -7,16 +7,18 @@ class Book extends Component {
   };
 
   handleChange = (e) => {
-    const { shelf } = this.state;
-    this.setState((state, props) => {
-      return { shelf: e.target.value };
-    });
-    this.props.updateBookShelf(this.props.id, shelf);
+    this.setState(
+      {
+        shelf: e.target.value,
+      },
+      () => {
+        this.props.updateBookShelf(this.props.id, this.state.shelf);
+      }
+    );
   };
 
   render() {
     const { title, authors, imageLink } = this.props;
-    const { shelf } = this.state;
     return (
       <li>
         <div className="book">
@@ -30,7 +32,7 @@ class Book extends Component {
               }}
             ></div>
             <div className="book-shelf-changer">
-              <select value={shelf} onChange={this.handleChange}>
+              <select value={this.state.shelf} onChange={this.handleChange}>
                 <option value="move" disabled>
                   Move to...
                 </option>
