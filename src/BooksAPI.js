@@ -27,7 +27,10 @@ export const update = (book, shelf) =>
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ shelf }),
-  }).then((res) => res.json());
+  }).then((res) => {
+    console.log(res);
+    res.json();
+  });
 
 export const search = (query) =>
   fetch(`${api}/search`, {
@@ -41,8 +44,8 @@ export const search = (query) =>
     .then((res) => res.json())
     .then((data) => data.books);
 
-export const assignBookToShelf = (arr, shelf) => {
-  return arr.filter((book) => {
-    return book.shelf === shelf;
-  });
-};
+// export const assignBookToShelf = (arr, shelf) => {
+//   return arr.filter((book) => {
+//     return book.shelf === shelf;
+//   });
+// };
