@@ -30,18 +30,19 @@ class BookShelf extends Component {
 
   updateShelf = (id, shelf) => {
     const newBook = this.state.books.find((book) => book.id === id);
-    BooksAPI.update(newBook, shelf);
-    BooksAPI.getAll().then((books) => {
-      this.setState(() => {
-        return {
-          books: books.map((book) => ({
-            id: book.id,
-            title: book.title,
-            authors: book.authors,
-            imageLink: book.imageLinks.smallThumbnail,
-            shelf: book.shelf,
-          })),
-        };
+    BooksAPI.update(newBook, shelf).then(() => {
+      return BooksAPI.getAll().then((books) => {
+        this.setState(() => {
+          return {
+            books: books.map((book) => ({
+              id: book.id,
+              title: book.title,
+              authors: book.authors,
+              imageLink: book.imageLinks.smallThumbnail,
+              shelf: book.shelf,
+            })),
+          };
+        });
       });
     });
   };
