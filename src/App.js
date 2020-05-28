@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-// import * as BooksAPI from "./BooksAPI";
+import * as BooksAPI from "./BooksAPI";
 import "./App.css";
 import BookShelf from "./BookShelf";
 import BookSearch from "./BookSearch";
@@ -15,10 +15,51 @@ class App extends Component {
     ],
   };
 
+  state = {
+    books: [],
+    query: "",
+  };
+
   static propTypes = { shelfs: PropTypes.array.isRequired };
+
+  componentDidMount() {
+    BooksAPI.getAll().then((books) => {
+      this.setState(() => {
+        return {
+          books: books.map((book) => ({
+            id: book.id,
+            title: book.title,
+            authors: book.authors,
+            imageLink: book.imageLinks.smallThumbnail,
+            shelf: book.shelf,
+          })),
+        };
+      });
+    });
+  }
+
+  updateShelf = (newBook, shelf) => {
+    BooksAPI.update(newBook, shelf).then(() => {
+      const booksInShelf = [...this.state.books]
+        .filter((book) => book.shelf !== "None")
+        .map((book) => {
+          if (book.id === newBook.id) {
+            return { ...book, shelf };
+          }
+          return book;
+        });
+
+      this.setState((state, props) => {
+        return {
+          books: booksInShelf,
+        };
+      });
+    });
+  };
 
   render() {
     const { shelfs } = this.props;
+    const { books } = this.state;
     return (
       <div className="app">
         <Switch>
@@ -34,7 +75,13 @@ class App extends Component {
                   </div>
                 </div>
                 {shelfs.map((book) => (
-                  <BookShelf key={book.id} {...book} />
+                  <BookShelf
+                    key={book.id}
+                    books={books}
+                    shelf={book.shelf}
+                    title={book.title}
+                    updateBookShelf={this.updateShelf}
+                  />
                 ))}
                 <div className="open-search">
                   <button>Add a book</button>

@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 
 class BookSearch extends Component {
+  state = {
+    book: null,
+    query: "",
+  };
   render() {
     return (
       <div>

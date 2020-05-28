@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import * as BooksAPI from "./BooksAPI";
 
 class Book extends Component {
   state = {
@@ -12,7 +11,7 @@ class Book extends Component {
         shelf: e.target.value,
       },
       () => {
-        this.props.updateBookShelf(this.props.id, this.state.shelf);
+        this.props.updateBook(this.props.id, this.state.shelf);
       }
     );
   };

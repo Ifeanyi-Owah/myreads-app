@@ -1,55 +1,32 @@
 import React, { Component } from "react";
 import Book from "./Book";
-import * as BooksAPI from "./BooksAPI";
 import PropTypes from "prop-types";
 
 class BookShelf extends Component {
   static propTypes = {
     shelf: PropTypes.string.isRequired,
+    books: PropTypes.array.isRequired,
   };
-
   state = {
-    books: [],
+    book: null,
+    shelf: "",
   };
 
-  componentDidMount() {
-    BooksAPI.getAll().then((books) => {
-      this.setState(() => {
-        return {
-          books: books.map((book) => ({
-            id: book.id,
-            title: book.title,
-            authors: book.authors,
-            imageLink: book.imageLinks.smallThumbnail,
-            shelf: book.shelf,
-          })),
-        };
-      });
-    });
-  }
-
-  updateShelf = (id, shelf) => {
-    const newBook = this.state.books.find((book) => book.id === id);
-    BooksAPI.update(newBook, shelf).then(() => {
-      return BooksAPI.getAll().then((books) => {
-        this.setState(() => {
-          return {
-            books: books.map((book) => ({
-              id: book.id,
-              title: book.title,
-              authors: book.authors,
-              imageLink: book.imageLinks.smallThumbnail,
-              shelf: book.shelf,
-            })),
-          };
-        });
-      });
-    });
+  updateBook = (idx, shelf) => {
+    const updatedBook = this.props.books.find((b) => b.id === idx);
+    this.setState(
+      {
+        book: updatedBook,
+      },
+      () => {
+        const { book } = this.state;
+        this.props.updateBookShelf(book, shelf);
+      }
+    );
   };
 
   render() {
-    const { books } = this.state;
-    const { title, shelf } = this.props;
+    const { title, shelf, books } = this.props;
     return (
       <div className="list-books-content">
         <div>
@@ -63,7 +40,7 @@ class BookShelf extends Component {
                     <Book
                       key={book.id}
                       {...book}
-                      updateBookShelf={this.updateShelf}
+                      updateBook={this.updateBook}
                     />
                   )
                 );
@@ -77,5 +54,3 @@ class BookShelf extends Component {
 }
 
 export default BookShelf;
-
-//
