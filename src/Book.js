@@ -6,14 +6,25 @@ class Book extends Component {
   };
 
   handleChange = (e) => {
-    this.setState(
-      {
-        shelf: e.target.value,
-      },
-      () => {
-        this.props.updateBook(this.props.id, this.state.shelf);
-      }
-    );
+    if (this.props.query) {
+      this.setState(
+        {
+          shelf: e.target.value,
+        },
+        () => {
+          this.props.addNewBook(this.props.id, this.state.shelf);
+        }
+      );
+    } else {
+      this.setState(
+        {
+          shelf: e.target.value,
+        },
+        () => {
+          this.props.updateBook(this.props.id, this.state.shelf);
+        }
+      );
+    }
   };
 
   render() {

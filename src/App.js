@@ -18,6 +18,8 @@ class App extends Component {
   state = {
     books: [],
     query: "",
+    searchedBooks: [],
+    error: null,
   };
 
   static propTypes = { shelfs: PropTypes.array.isRequired };
@@ -38,12 +40,12 @@ class App extends Component {
     });
   }
 
-  updateShelf = (newBook, shelf) => {
-    BooksAPI.update(newBook, shelf).then(() => {
+  updateShelf = (updatedBook, shelf) => {
+    BooksAPI.update(updatedBook, shelf).then(() => {
       const booksInShelf = [...this.state.books]
         .filter((book) => book.shelf !== "None")
         .map((book) => {
-          if (book.id === newBook.id) {
+          if (book.id === updatedBook.id) {
             return { ...book, shelf };
           }
           return book;
@@ -57,13 +59,72 @@ class App extends Component {
     });
   };
 
+  addBook = (newBook, shelf) => {
+    BooksAPI.update(newBook, shelf).then(() => {
+      const newBooks = [...this.state.searchedBooks].map((book) => {
+        if (book.id === newBook.id) {
+          return { ...book, shelf };
+        }
+        return book;
+      });
+      this.setState((state, props) => {
+        return {
+          searchedBooks: newBooks,
+        };
+      });
+      this.setState((state, props) => {
+        return {
+          books: [...state.books, { ...newBook, shelf }],
+        };
+      });
+    });
+  };
+
+  searchedBooksUpdate = (query) => {
+    BooksAPI.search(query).then((books) => {
+      console.log(books);
+      this.setState(() => {
+        try {
+          return {
+            searchedBooks: books
+              .filter((book) => book.imageLinks.smallThumbnail)
+              .map((book) => ({
+                id: book.id,
+                title: book.title,
+                authors: book.authors ? book.authors : ["No authors found"],
+                imageLink: book.imageLinks.smallThumbnail,
+                shelf: "None",
+              })),
+          };
+        } catch (error) {
+          this.setState({
+            error,
+          });
+        }
+      });
+    });
+  };
+
   render() {
     const { shelfs } = this.props;
-    const { books } = this.state;
+    const { books, searchedBooks, error } = this.state;
+    if (error) {
+      return <h2>No results found...</h2>;
+    }
     return (
       <div className="app">
         <Switch>
-          <Route exact path="/search" render={() => <BookSearch />} />
+          <Route
+            exact
+            path="/search"
+            render={() => (
+              <BookSearch
+                books={searchedBooks}
+                searchBookUpdate={this.searchedBooksUpdate}
+                addBook={this.addBook}
+              />
+            )}
+          />
           <Route
             exact
             path="/"
