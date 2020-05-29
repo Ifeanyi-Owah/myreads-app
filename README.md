@@ -50,8 +50,7 @@ To run this app:
   [`Windows Terminal Navigation`](https://wiki.communitydata.science/Windows_terminal_navigation)
 - install all project dependencies with `npm install`
 - start the development server with `npm start`
-- Navigate to http://localhost:3000/ on your browser and you should see a web page like this:
-  ![MyReads App mainpage]('./images/MyreadsAppmainpage.png' "Mainpage")
+- Navigate to http://localhost:3000/ on your browser.
 
 ### Search Terms
 
