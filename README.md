@@ -9,7 +9,7 @@ This application helps the user track and manage books in his digital library wh
 - Read
 - None
 
-## TL;DR
+## Running the Application
 
 To play around with this app right away, Clone or download this repo [MyReads App](https://github.com/Ifeanyi-Owah/myreads-app)
 
@@ -17,6 +17,9 @@ To play around with this app right away, Clone or download this repo [MyReads Ap
   [windows](https://wiki.communitydata.science/Windows_terminal_navigation)
 - install all project dependencies with `npm install`
 - start the development server with `npm start`
+
+Navigate to http://localhost:3000/ on your browser and you should see an image like this:
+![MyReads App mainpage]("/images/Myreads App mainpage.png "Mainpage")
 
 ### `Search Terms`
 
