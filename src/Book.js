@@ -43,12 +43,18 @@ class Book extends Component {
               }}
             ></div>
             <div className="book-shelf-changer">
-              <select value={this.state.shelf} onChange={this.handleChange}>
+              <select
+                value={this.state.shelf}
+                onChange={this.handleChange}
+                selected
+              >
                 <option value="move" disabled>
                   Move to...
                 </option>
                 <option value="currentlyReading">Currently Reading</option>
-                <option value="wantToRead">Want to Read</option>
+                <option value="wantToRead" selected>
+                  Want to Read
+                </option>
                 <option value="read">Read</option>
                 <option value="none">None</option>
               </select>
@@ -56,7 +62,7 @@ class Book extends Component {
           </div>
           <div className="book-title">{title}</div>
           <div className="book-authors">
-            {authors.map((author, i) => {
+            {authors.map((author) => {
               return (
                 <p key={uuid()}>
                   <span>{author}</span>

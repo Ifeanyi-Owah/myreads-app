@@ -23,7 +23,7 @@ class BookSearch extends Component {
         } else {
           setTimeout(() => {
             this.props.searchBookUpdate(query);
-          }, 1000);
+          }, 3500);
         }
       }
     );
