@@ -1,12 +1,19 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Book from "./Book";
+import PropTypes from "prop-types";
 
 class BookSearch extends Component {
   state = {
     book: null,
     query: "",
     isQueryEmpty: false,
+  };
+
+  static propTypes = {
+    books: PropTypes.array.isRequired,
+    searchBookUpdate: PropTypes.func.isRequired,
+    addBook: PropTypes.func.isRequired,
   };
 
   handleChange = (e) => {
@@ -23,7 +30,7 @@ class BookSearch extends Component {
         } else {
           setTimeout(() => {
             this.props.searchBookUpdate(query);
-          }, 3500);
+          }, 2500);
         }
       }
     );
@@ -49,7 +56,9 @@ class BookSearch extends Component {
     if (isQueryEmpty) {
       return (
         <div>
-          <h2>No results found...</h2>
+          <h2 style={{ padding: "20px", color: "darkgray" }}>
+            No results found...
+          </h2>
         </div>
       );
     }

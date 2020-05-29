@@ -115,16 +115,8 @@ class App extends Component {
     const { books, searchedBooks, error } = this.state;
     if (error) {
       return (
-        <h2>
-          <span>Hmmm… can't reach this page</span>
-          <br />
-          <span>
-            Click
-            <Link to="/search">
-              <span>here </span>
-            </Link>
-            to try a new search term
-          </span>
+        <h2 style={{ padding: "20px", color: "darkgray" }}>
+          Hmmm… couldn't find the page you were looking for
         </h2>
       );
     }

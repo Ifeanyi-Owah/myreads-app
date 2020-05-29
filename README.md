@@ -11,6 +11,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ├── public
 │   ├── favicon.ico
 │   └── index.html
+    └── logo192.png
+    └── logo512.png
     └── manifest.json
     └── robots.txt
 └── src

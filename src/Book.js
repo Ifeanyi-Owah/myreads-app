@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import { v4 as uuid } from "uuid";
+import PropTypes from "prop-types";
 
 class Book extends Component {
   state = {
     shelf: "",
+  };
+
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    authors: PropTypes.array.isRequired,
+    imageLink: PropTypes.string.isRequired,
   };
 
   handleChange = (e) => {
@@ -45,16 +52,14 @@ class Book extends Component {
             <div className="book-shelf-changer">
               <select
                 value={this.state.shelf}
-                onChange={() => this.handleChange}
+                onChange={this.handleChange}
                 selected
               >
                 <option value="move" disabled>
                   Move to...
                 </option>
                 <option value="currentlyReading">Currently Reading</option>
-                <option value="wantToRead" selected>
-                  Want to Read
-                </option>
+                <option value="wantToRead">Want to Read</option>
                 <option value="read">Read</option>
                 <option value="none">None</option>
               </select>
