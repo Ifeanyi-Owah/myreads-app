@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { v4 as uuid } from "uuid";
 
 class Book extends Component {
   state = {
@@ -55,9 +56,9 @@ class Book extends Component {
           </div>
           <div className="book-title">{title}</div>
           <div className="book-authors">
-            {authors.map((author) => {
+            {authors.map((author, i) => {
               return (
-                <p key={title}>
+                <p key={uuid()}>
                   <span>{author}</span>
                   <br />
                 </p>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch, Link } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 import * as BooksAPI from "./BooksAPI";
 import "./App.css";
 import BookShelf from "./BookShelf";
@@ -82,7 +83,7 @@ class App extends Component {
 
   searchedBooksUpdate = (query) => {
     BooksAPI.search(query).then((books) => {
-      console.log(books);
+      // console.log(books);
       this.setState(() => {
         try {
           return {
@@ -109,7 +110,19 @@ class App extends Component {
     const { shelfs } = this.props;
     const { books, searchedBooks, error } = this.state;
     if (error) {
-      return <h2>No results found...</h2>;
+      return (
+        <h2>
+          <span>Hmmm… can't reach this page</span>
+          <br />
+          <span>
+            Click
+            <Link to="/search">
+              <span>here </span>
+            </Link>
+            to try a new search term
+          </span>
+        </h2>
+      );
     }
     return (
       <div className="app">
@@ -137,7 +150,7 @@ class App extends Component {
                 </div>
                 {shelfs.map((book) => (
                   <BookShelf
-                    key={book.id}
+                    key={uuid()}
                     books={books}
                     shelf={book.shelf}
                     title={book.title}

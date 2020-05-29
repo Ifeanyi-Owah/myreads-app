@@ -21,7 +21,9 @@ class BookSearch extends Component {
             isQueryEmpty: true,
           });
         } else {
-          this.props.searchBookUpdate(query);
+          setTimeout(() => {
+            this.props.searchBookUpdate(query);
+          }, 1000);
         }
       }
     );
@@ -45,7 +47,11 @@ class BookSearch extends Component {
     const { query, isQueryEmpty } = this.state;
 
     if (isQueryEmpty) {
-      return <h2>No results...Refresh page to start a new search</h2>;
+      return (
+        <div>
+          <h2>No results found...</h2>
+        </div>
+      );
     }
     return (
       <div>
@@ -61,14 +67,18 @@ class BookSearch extends Component {
                 placeholder="Search by title or author"
                 value={query}
                 onChange={this.handleChange}
-                onInvalid={this.handleInvalid}
               />
             </div>
           </div>
           <div className="search-books-results">
             <ol className="books-grid">
               {books.map((book) => (
-                <Book {...book} addNewBook={this.addNewBook} query={query} />
+                <Book
+                  key={book.id}
+                  {...book}
+                  addNewBook={this.addNewBook}
+                  query={query}
+                />
               ))}
             </ol>
           </div>
