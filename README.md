@@ -11,10 +11,10 @@ This application helps the user track and manage books in a digital library whil
 
 ## Running the Application
 
-To run this app right away, Clone or download this repo [MyReads App](https://github.com/Ifeanyi-Owah/myreads-app) to your computer
+To run this app right away, Clone or download this repo [MyReads App Repo](https://github.com/Ifeanyi-Owah/myreads-app) to your computer
 
-- Navigate into directory location where you saved the folder: [mac](https://wiki.communitydata.science/MacOS_terminal_navigation) for mac users
-  [windows](https://wiki.communitydata.science/Windows_terminal_navigation) for windows users
+- Navigate to the directory where you saved the cloned: [macOS Terminal Navigation](https://wiki.communitydata.science/MacOS_terminal_navigation)
+  [Windows Terminal Navigation](https://wiki.communitydata.science/Windows_terminal_navigation)
 - install all project dependencies with `npm install`
 - start the development server with `npm start`
 
@@ -23,7 +23,7 @@ Navigate to http://localhost:3000/ on your browser and you should see a web page
 
 ### `Search Terms`
 
-The following search terms can be used to retrieve more books from the server:
+The following search terms can be used to retrieve more books from the server on the search page http://localhost:3000/search:
 
 'Android', 'Art', 'Artificial Intelligence', 'Astronomy', 'Austen', 'Baseball', 'Basketball', 'Bhagat', 'Biography', 'Brief', 'Business', 'Camus', 'Cervantes', 'Christie', 'Classics', 'Comics', 'Cook', 'Cricket', 'Cycling', 'Desai', 'Design', 'Development', 'Digital Marketing', 'Drama', 'Drawing', 'Dumas', 'Education', 'Everything', 'Fantasy', 'Film', 'Finance', 'First', 'Fitness', 'Football', 'Future', 'Games', 'Gandhi', 'Homer', 'Horror', 'Hugo', 'Ibsen', 'Journey', 'Kafka', 'King', 'Lahiri', 'Larsson', 'Learn', 'Literary Fiction', 'Make', 'Manage', 'Marquez', 'Money', 'Mystery', 'Negotiate', 'Painting', 'Philosophy', 'Photography', 'Poetry', 'Production', 'Programming', 'React', 'Redux', 'River', 'Robotics', 'Rowling', 'Satire', 'Science Fiction', 'Shakespeare', 'Singh', 'Swimming', 'Tale', 'Thrun', 'Time', 'Tolstoy', 'Travel', 'Ultimate', 'Virtual Reality', 'Web Development', 'iOS'
 
