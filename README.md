@@ -7,21 +7,31 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ```bash
 ├── README.md - This file.
 ├── SEARCH_TERMS.md # The whitelisted short collection of available search terms for you to use with your app.
-├── package.json #
+├── package.json
 ├── public
-│   ├── favicon.ico # React Icon, You may change if you wish.
-│   └── index.html # DO NOT MODIFY
+│   ├── favicon.ico
+│   └── index.html
+    └── manifest.json
+    └── robots.txt
 └── src
-    ├── App.css # Styles for your app. Feel free to customize this as you desire.
-    ├── App.js # This is the root of your app. Contains static HTML right now.
-    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
+    ├── App.css
+    ├── App.js
+        ├── MainPage.js
+            ├── BookSearch.js
+                ├── Book.js
+            ├── BookShelf.js
+                ├── Book.js
+    ├── App.test.js
     ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
-    ├── icons # Helpful images for your app. Use at your discretion.
+    ├── icons
     │   ├── add.svg
     │   ├── arrow-back.svg
     │   └── arrow-drop-down.svg
-    ├── index.css # Global styles. You probably won't need to change anything here.
-    └── index.js # You should not need to modify this file. It is used for DOM rendering only.
+    ├── images
+        ├── Mreads App mainpage.png
+        ├── Searchpage.png
+    ├── index.css
+    └── index.js
 ```
 
 This application helps the user track and manage books in a digital library while categorizing the status of each book according to its location on a library shelf. The available shelfs are :
@@ -48,4 +58,4 @@ More books can be retrieved from the server on the search page http://localhost:
 
 ## Contributing
 
-Ifeanyi Owah.
+Ifeanyi Owah. Thanks to the Udacity backend server team for the BooksApi file, icons and initial static folder.
