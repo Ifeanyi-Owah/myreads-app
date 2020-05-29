@@ -98,7 +98,7 @@ class App extends Component {
                 title: book.title,
                 authors: book.authors ? book.authors : ["No authors found"],
                 imageLink: book.imageLinks.smallThumbnail,
-                shelf: "None",
+                shelf: book.shelf ? book.shelf : "none",
               })),
           };
         } catch (error) {

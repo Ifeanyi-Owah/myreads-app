@@ -13,8 +13,8 @@ This application helps the user track and manage books in his digital library wh
 
 To play around with this app right away, Clone or download this repo [MyReads App](https://github.com/Ifeanyi-Owah/myreads-app)
 
-- Navigate into directory location: [mac](https://www.dummies.com/computers/macs/mac-operating-systems/how-to-use-basic-unix-commands-to-work-in-terminal-on-your-mac/)
-  [windows]
+- Navigate into directory location: [mac](https://wiki.communitydata.science/MacOS_terminal_navigation)
+  [windows](https://wiki.communitydata.science/Windows_terminal_navigation)
 - install all project dependencies with `npm install`
 - start the development server with `npm start`
 
@@ -26,6 +26,4 @@ The following search terms can be used to retrieve more books from the server:
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+Ifeanyi Owah.
