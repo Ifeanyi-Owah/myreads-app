@@ -27,9 +27,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     │   ├── add.svg
     │   ├── arrow-back.svg
     │   └── arrow-drop-down.svg
-    ├── images
-        ├── Mreads App mainpage.png
-        ├── Searchpage.png
     ├── index.css
     └── index.js
 ```
