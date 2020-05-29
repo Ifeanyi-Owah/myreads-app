@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ```bash
 ├── README.md - This file.
-├── SEARCH_TERMS.md # The whitelisted short collection of available search terms for you to use with your app.
+├── SEARCH_TERMS.md # The whitelisted short collection of available search terms for you to use with the app.
 ├── package.json
 ├── public
 │   ├── favicon.ico
@@ -22,7 +22,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
             ├── BookShelf.js
                 ├── Book.js
     ├── App.test.js
-    ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
+    ├── BooksAPI.js # A JavaScript API for the provided Udacity backend.
     ├── icons
     │   ├── add.svg
     │   ├── arrow-back.svg
