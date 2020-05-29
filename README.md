@@ -51,7 +51,7 @@ To run this app:
 - install all project dependencies with `npm install`
 - start the development server with `npm start`
 - Navigate to http://localhost:3000/ on your browser and you should see a web page like this:
-  ![MyReads App mainpage](/images/MyreadsAppmainpage.png "Mainpage")
+  ![MyReads App mainpage]('./images/MyreadsAppmainpage.png' "Mainpage")
 
 ### Search Terms
 
