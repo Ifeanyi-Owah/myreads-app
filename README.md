@@ -2,6 +2,28 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Folder Structure
+
+```bash
+├── README.md - This file.
+├── SEARCH_TERMS.md # The whitelisted short collection of available search terms for you to use with your app.
+├── package.json #
+├── public
+│   ├── favicon.ico # React Icon, You may change if you wish.
+│   └── index.html # DO NOT MODIFY
+└── src
+    ├── App.css # Styles for your app. Feel free to customize this as you desire.
+    ├── App.js # This is the root of your app. Contains static HTML right now.
+    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
+    ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
+    ├── icons # Helpful images for your app. Use at your discretion.
+    │   ├── add.svg
+    │   ├── arrow-back.svg
+    │   └── arrow-drop-down.svg
+    ├── index.css # Global styles. You probably won't need to change anything here.
+    └── index.js # You should not need to modify this file. It is used for DOM rendering only.
+```
+
 This application helps the user track and manage books in a digital library while categorizing the status of each book according to its location on a library shelf. The available shelfs are :
 
 - Currently Reading
@@ -20,11 +42,9 @@ To run this app, Clone or download the repo [MyReads App Repo](https://github.co
 - Navigate to http://localhost:3000/ on your browser and you should see a web page like this:
   ![MyReads App mainpage]("/images/Myreads App mainpage.png "Mainpage")
 
-### `Search Terms`
+### Search Terms
 
-The following search terms can be used to retrieve more books from the server on the search page http://localhost:3000/search:
-
-'Android', 'Art', 'Artificial Intelligence', 'Astronomy', 'Austen', 'Baseball', 'Basketball', 'Bhagat', 'Biography', 'Brief', 'Business', 'Camus', 'Cervantes', 'Christie', 'Classics', 'Comics', 'Cook', 'Cricket', 'Cycling', 'Desai', 'Design', 'Development', 'Digital Marketing', 'Drama', 'Drawing', 'Dumas', 'Education', 'Everything', 'Fantasy', 'Film', 'Finance', 'First', 'Fitness', 'Football', 'Future', 'Games', 'Gandhi', 'Homer', 'Horror', 'Hugo', 'Ibsen', 'Journey', 'Kafka', 'King', 'Lahiri', 'Larsson', 'Learn', 'Literary Fiction', 'Make', 'Manage', 'Marquez', 'Money', 'Mystery', 'Negotiate', 'Painting', 'Philosophy', 'Photography', 'Poetry', 'Production', 'Programming', 'React', 'Redux', 'River', 'Robotics', 'Rowling', 'Satire', 'Science Fiction', 'Shakespeare', 'Singh', 'Swimming', 'Tale', 'Thrun', 'Time', 'Tolstoy', 'Travel', 'Ultimate', 'Virtual Reality', 'Web Development', 'iOS'
+More books can be retrieved from the server on the search page http://localhost:3000/search. Refer to the SEARCH_TERMS.md file
 
 ## Contributing
 
