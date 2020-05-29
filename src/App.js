@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import * as BooksAPI from "./BooksAPI";
 import "./App.css";
 import BookShelf from "./BookShelf";
@@ -145,7 +145,9 @@ class App extends Component {
                   />
                 ))}
                 <div className="open-search">
-                  <button>Add a book</button>
+                  <Link to="/search">
+                    <button>Add a book</button>
+                  </Link>
                 </div>
               </div>
             )}

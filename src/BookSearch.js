@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Book from "./Book";
 
 class BookSearch extends Component {
@@ -50,12 +51,10 @@ class BookSearch extends Component {
       <div>
         <div className="search-books">
           <div className="search-books-bar">
-            <button
-              className="close-search"
-              //   onClick={() => this.setState({ showSearchPage: false })}
-            >
-              Close
-            </button>
+            <Link to="/">
+              <button className="close-search">Close</button>
+            </Link>
+
             <div className="search-books-input-wrapper">
               <input
                 type="text"
