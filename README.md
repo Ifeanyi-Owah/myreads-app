@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This application helps the user track and manage books in his digital library while categorizing the status of each book according to its location in the library. The categorization is based on the shelf the book is placed. The available shelfs are :
+This application helps the user track and manage books in a digital library while categorizing the status of each book according to its location on a library shelf. The available shelfs are :
 
 - Currently Reading
 - Want to Read
@@ -11,14 +11,14 @@ This application helps the user track and manage books in his digital library wh
 
 ## Running the Application
 
-To play around with this app right away, Clone or download this repo [MyReads App](https://github.com/Ifeanyi-Owah/myreads-app)
+To run this app right away, Clone or download this repo [MyReads App](https://github.com/Ifeanyi-Owah/myreads-app) to your computer
 
-- Navigate into directory location: [mac](https://wiki.communitydata.science/MacOS_terminal_navigation)
-  [windows](https://wiki.communitydata.science/Windows_terminal_navigation)
+- Navigate into directory location where you saved the folder: [mac](https://wiki.communitydata.science/MacOS_terminal_navigation) for mac users
+  [windows](https://wiki.communitydata.science/Windows_terminal_navigation) for windows users
 - install all project dependencies with `npm install`
 - start the development server with `npm start`
 
-Navigate to http://localhost:3000/ on your browser and you should see an image like this:
+Navigate to http://localhost:3000/ on your browser and you should see a web page like this:
 ![MyReads App mainpage]("/images/Myreads App mainpage.png "Mainpage")
 
 ### `Search Terms`
