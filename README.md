@@ -13,13 +13,12 @@ This application helps the user track and manage books in a digital library whil
 
 To run this app right away, Clone or download this repo [MyReads App Repo](https://github.com/Ifeanyi-Owah/myreads-app) to your computer
 
-- Navigate to the directory where you saved the cloned: [macOS Terminal Navigation](https://wiki.communitydata.science/MacOS_terminal_navigation)
+- Navigate to the directory where you saved the folder: MacOS [macOS Terminal Navigation](https://wiki.communitydata.science/MacOS_terminal_navigation). Window
   [Windows Terminal Navigation](https://wiki.communitydata.science/Windows_terminal_navigation)
 - install all project dependencies with `npm install`
 - start the development server with `npm start`
-
-Navigate to http://localhost:3000/ on your browser and you should see a web page like this:
-![MyReads App mainpage]("/images/Myreads App mainpage.png "Mainpage")
+- Navigate to http://localhost:3000/ on your browser and you should see a web page like this:
+  ![MyReads App mainpage]("/images/Myreads App mainpage.png "Mainpage")
 
 ### `Search Terms`
 
