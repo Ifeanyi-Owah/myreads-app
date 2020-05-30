@@ -24,7 +24,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
             ├── BookShelf.js
                 ├── Book.js
     ├── App.test.js
-    ├── BooksAPI.js # A JavaScript API for the provided Udacity backend.
+    ├── BooksAPI.js
     ├── icons
     │   ├── add.svg
     │   ├── arrow-back.svg
