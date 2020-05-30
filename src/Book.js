@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 class Book extends Component {
   state = {
-    shelf: "",
+    shelf: this.props.shelf,
   };
 
   static propTypes = {
