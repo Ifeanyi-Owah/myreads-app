@@ -7,7 +7,6 @@ class BookSearch extends Component {
   state = {
     book: null,
     query: "",
-    isQueryEmpty: false,
   };
 
   static propTypes = {
@@ -31,11 +30,16 @@ class BookSearch extends Component {
         }
       );
     } else {
-      this.setState((state, props) => {
-        return {
-          query: "",
-        };
-      });
+      // this.setState(
+      //   {
+      //     query: "",
+      //   },
+      //   () => {
+      // this.props.clearSearch();
+      // const { query } = this.state;
+      this.props.searchBookUpdate("");
+      // }
+      // );
     }
   };
 
@@ -72,6 +76,7 @@ class BookSearch extends Component {
             <div className="search-books-input-wrapper">
               <input
                 type="text"
+                name="search"
                 placeholder="Search by title or author"
                 value={query}
                 onChange={this.handleChange}

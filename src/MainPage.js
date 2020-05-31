@@ -30,7 +30,7 @@ class App extends Component {
       this.setState(() => {
         return {
           books: books
-            .filter((book) => book.imageLinks.smallThumbnail)
+            .filter((book) => book.imageLinks.smallThumbnail !== undefined)
             .map((book) => ({
               id: book.id,
               title: book.title,
@@ -87,27 +87,41 @@ class App extends Component {
   };
 
   searchedBookUpdate = (query) => {
-    BooksAPI.search(query).then((books) => {
-      if (books.error) {
-        this.setState((state, props) => {
-          return { searchedBooks: [] };
-        });
-      } else {
-        this.setState((state, props) => {
-          return {
-            searchedBooks: books
-              .filter((book) => book.imageLinks.smallThumbnail)
-              .map((book) => ({
-                id: book.id,
-                title: book.title,
-                authors: book.authors ? book.authors : ["No authors found"],
-                imageLink: book.imageLinks.smallThumbnail,
-                shelf: book.shelf ? book.shelf : "none",
-              })),
-          };
-        });
-      }
-    });
+    if (query) {
+      this.setState(
+        {
+          query,
+        },
+        () => {
+          const { query } = this.state;
+          return BooksAPI.search(query).then((books) => {
+            if (books.error) {
+              this.setState((state, props) => {
+                return { searchedBooks: [] };
+              });
+            } else {
+              this.setState((state, props) => {
+                return {
+                  searchedBooks: books
+                    .filter((book) => book.imageLinks)
+                    .map((book) => ({
+                      id: book.id,
+                      title: book.title,
+                      authors: book.authors
+                        ? book.authors
+                        : ["No authors found"],
+                      imageLink: book.imageLinks.smallThumbnail,
+                      shelf: book.shelf ? book.shelf : "none",
+                    })),
+                };
+              });
+            }
+          });
+        }
+      );
+    } else {
+      this.clearSearch();
+    }
   };
 
   clearSearch = () => {
