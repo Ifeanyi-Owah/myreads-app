@@ -95,16 +95,26 @@ class App extends Component {
       } else {
         this.setState((state, props) => {
           return {
-            searchedBooks: books.map((book) => ({
-              id: book.id,
-              title: book.title,
-              authors: book.authors ? book.authors : ["No authors found"],
-              imageLink: book.imageLinks.smallThumbnail,
-              shelf: book.shelf ? book.shelf : "none",
-            })),
+            searchedBooks: books
+              .filter((book) => book.imageLinks.smallThumbnail)
+              .map((book) => ({
+                id: book.id,
+                title: book.title,
+                authors: book.authors ? book.authors : ["No authors found"],
+                imageLink: book.imageLinks.smallThumbnail,
+                shelf: book.shelf ? book.shelf : "none",
+              })),
           };
         });
       }
+    });
+  };
+
+  clearSearch = () => {
+    this.setState((state, props) => {
+      return {
+        searchedBooks: [],
+      };
     });
   };
 
@@ -122,6 +132,7 @@ class App extends Component {
                 books={searchedBooks}
                 searchBookUpdate={this.searchedBookUpdate}
                 addBook={this.addBook}
+                clearSearch={this.clearSearch}
               />
             )}
           />

@@ -27,7 +27,7 @@ class BookSearch extends Component {
           const { query } = this.state;
           return setTimeout(() => {
             this.props.searchBookUpdate(query);
-          }, 300);
+          }, 200);
         }
       );
     } else {
@@ -52,6 +52,10 @@ class BookSearch extends Component {
     );
   };
 
+  handleClick = () => {
+    this.props.clearSearch();
+  };
+
   render() {
     const { books } = this.props;
     const { query } = this.state;
@@ -60,7 +64,9 @@ class BookSearch extends Component {
         <div className="search-books">
           <div className="search-books-bar">
             <Link to="/">
-              <button className="close-search">Close</button>
+              <button className="close-search" onClick={this.handleClick}>
+                Close
+              </button>
             </Link>
 
             <div className="search-books-input-wrapper">
