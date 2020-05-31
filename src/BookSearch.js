@@ -30,16 +30,16 @@ class BookSearch extends Component {
         }
       );
     } else {
-      // this.setState(
-      //   {
-      //     query: "",
-      //   },
-      //   () => {
-      // this.props.clearSearch();
-      // const { query } = this.state;
-      this.props.searchBookUpdate("");
-      // }
-      // );
+      this.setState(
+        {
+          query: "",
+        },
+        () => {
+          this.props.clearSearch();
+          const { query } = this.state;
+          this.props.searchBookUpdate(query);
+        }
+      );
     }
   };
 

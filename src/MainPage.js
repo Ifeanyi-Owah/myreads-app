@@ -30,7 +30,7 @@ class App extends Component {
       this.setState(() => {
         return {
           books: books
-            .filter((book) => book.imageLinks.smallThumbnail !== undefined)
+            .filter((book) => book.imageLinks)
             .map((book) => ({
               id: book.id,
               title: book.title,
@@ -100,9 +100,26 @@ class App extends Component {
                 return { searchedBooks: [], error: true };
               });
             } else {
+              function updateSearchedBooks(shelfBooks) {
+                const updatedBookSearch = [];
+                for (let i = 0; i < books.length; i++) {
+                  for (let j = 0; j < shelfBooks.length; j++) {
+                    if (books[i].id === shelfBooks[j].id) {
+                      updatedBookSearch.push({
+                        ...books[i],
+                        shelf: shelfBooks[j].shelf,
+                      });
+                      books.splice(i, 1);
+                    }
+                  }
+                }
+                return [...books, ...updatedBookSearch];
+              }
+              const updatedBookSearch = updateSearchedBooks(this.state.books);
               this.setState((state, props) => {
                 return {
-                  searchedBooks: books
+                  error: false,
+                  searchedBooks: updatedBookSearch
                     .filter((book) => book.imageLinks)
                     .map((book) => ({
                       id: book.id,
@@ -128,6 +145,7 @@ class App extends Component {
     this.setState((state, props) => {
       return {
         searchedBooks: [],
+        query: "",
       };
     });
   };
@@ -151,7 +169,10 @@ class App extends Component {
                     clearSearch={this.clearSearch}
                   />
                   <h1 style={{ color: "#485156", padding: "20px" }}>
-                    No search results found!..try new search
+                    <i className="fas fa-frown"></i>Aw, Snap...
+                    <small style={{ fontSize: "1.5rem", fontWeight: "300" }}>
+                      try new search
+                    </small>
                   </h1>
                 </div>
               ) : (
