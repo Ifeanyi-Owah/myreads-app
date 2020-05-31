@@ -17,23 +17,26 @@ class BookSearch extends Component {
   };
 
   handleChange = (e) => {
-    this.setState(
-      {
-        query: e.target.value,
-      },
-      () => {
-        const { query } = this.state;
-        if (!query) {
-          this.setState({
-            isQueryEmpty: true,
-          });
-        } else {
-          setTimeout(() => {
+    const query = e.target.value;
+    if (query) {
+      this.setState(
+        {
+          query: e.target.value,
+        },
+        () => {
+          const { query } = this.state;
+          return setTimeout(() => {
             this.props.searchBookUpdate(query);
-          }, 2500);
+          }, 300);
         }
-      }
-    );
+      );
+    } else {
+      this.setState((state, props) => {
+        return {
+          query: "",
+        };
+      });
+    }
   };
 
   addNewBook = (idx, shelf) => {
@@ -51,17 +54,7 @@ class BookSearch extends Component {
 
   render() {
     const { books } = this.props;
-    const { query, isQueryEmpty } = this.state;
-
-    if (isQueryEmpty) {
-      return (
-        <div>
-          <h2 style={{ padding: "20px", color: "darkgray" }}>
-            No results found...
-          </h2>
-        </div>
-      );
-    }
+    const { query } = this.state;
     return (
       <div>
         <div className="search-books">

@@ -91,20 +91,20 @@ class App extends Component {
       this.setState(() => {
         try {
           return {
-            searchedBooks: books
-              .filter((book) => book.imageLinks.smallThumbnail)
-              .map((book) => ({
-                id: book.id,
-                title: book.title,
-                authors: book.authors ? book.authors : ["No authors found"],
-                imageLink: book.imageLinks.smallThumbnail,
-                shelf: book.shelf ? book.shelf : "none",
-              })),
+            searchedBooks: books.map((book) => ({
+              id: book.id,
+              title: book.title,
+              authors: book.authors ? book.authors : ["No authors found"],
+              imageLink: book.imageLinks.smallThumbnail,
+              shelf: book.shelf ? book.shelf : "none",
+            })),
           };
         } catch (error) {
-          this.setState({
-            error,
-          });
+          if (error) {
+            this.setState({
+              searchedBooks: [],
+            });
+          }
         }
       });
     });
@@ -112,14 +112,7 @@ class App extends Component {
 
   render() {
     const { shelfs } = this.props;
-    const { books, searchedBooks, error } = this.state;
-    if (error) {
-      return (
-        <h2 style={{ padding: "20px", color: "darkgray" }}>
-          Hmmm… couldn't find the page you were looking for
-        </h2>
-      );
-    }
+    const { books, searchedBooks } = this.state;
     return (
       <div className="app">
         <Switch>
