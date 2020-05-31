@@ -20,7 +20,7 @@ class App extends Component {
     books: [],
     query: "",
     searchedBooks: [],
-    error: null,
+    error: false,
   };
 
   static propTypes = { shelfs: PropTypes.array.isRequired };
@@ -97,7 +97,7 @@ class App extends Component {
           return BooksAPI.search(query).then((books) => {
             if (books.error) {
               this.setState((state, props) => {
-                return { searchedBooks: [] };
+                return { searchedBooks: [], error: true };
               });
             } else {
               this.setState((state, props) => {
@@ -134,21 +134,35 @@ class App extends Component {
 
   render() {
     const { shelfs } = this.props;
-    const { books, searchedBooks } = this.state;
+    const { books, searchedBooks, error } = this.state;
     return (
       <div className="app">
         <Switch>
           <Route
             exact
             path="/search"
-            render={() => (
-              <BookSearch
-                books={searchedBooks}
-                searchBookUpdate={this.searchedBookUpdate}
-                addBook={this.addBook}
-                clearSearch={this.clearSearch}
-              />
-            )}
+            render={() =>
+              error === true ? (
+                <div>
+                  <BookSearch
+                    books={searchedBooks}
+                    searchBookUpdate={this.searchedBookUpdate}
+                    addBook={this.addBook}
+                    clearSearch={this.clearSearch}
+                  />
+                  <h1 style={{ color: "#485156", padding: "20px" }}>
+                    No search results found!..try new search
+                  </h1>
+                </div>
+              ) : (
+                <BookSearch
+                  books={searchedBooks}
+                  searchBookUpdate={this.searchedBookUpdate}
+                  addBook={this.addBook}
+                  clearSearch={this.clearSearch}
+                />
+              )
+            }
           />
           <Route
             exact
