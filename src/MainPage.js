@@ -88,8 +88,12 @@ class App extends Component {
 
   searchedBookUpdate = (query) => {
     BooksAPI.search(query).then((books) => {
-      this.setState(() => {
-        try {
+      if (books.error) {
+        this.setState((state, props) => {
+          return { searchedBooks: [] };
+        });
+      } else {
+        this.setState((state, props) => {
           return {
             searchedBooks: books.map((book) => ({
               id: book.id,
@@ -99,14 +103,8 @@ class App extends Component {
               shelf: book.shelf ? book.shelf : "none",
             })),
           };
-        } catch (error) {
-          if (error) {
-            this.setState({
-              searchedBooks: [],
-            });
-          }
-        }
-      });
+        });
+      }
     });
   };
 
