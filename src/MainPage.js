@@ -145,7 +145,6 @@ class App extends Component {
     this.setState((state, props) => {
       return {
         searchedBooks: [],
-        query: "",
       };
     });
   };
@@ -169,10 +168,10 @@ class App extends Component {
                     clearSearch={this.clearSearch}
                   />
                   <h1 style={{ color: "#485156", padding: "20px" }}>
-                    <i className="fas fa-frown"></i>Aw, Snap...
                     <small style={{ fontSize: "1.5rem", fontWeight: "300" }}>
-                      try new search
+                      No results found...
                     </small>
+                    <i className="fas fa-frown"></i>
                   </h1>
                 </div>
               ) : (

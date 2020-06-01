@@ -35,9 +35,10 @@ class BookSearch extends Component {
           query: "",
         },
         () => {
-          this.props.clearSearch();
           const { query } = this.state;
-          this.props.searchBookUpdate(query);
+          return setTimeout(() => {
+            this.props.searchBookUpdate(query);
+          }, 200);
         }
       );
     }
@@ -75,8 +76,7 @@ class BookSearch extends Component {
 
             <div className="search-books-input-wrapper">
               <input
-                type="text"
-                name="search"
+                type="search"
                 placeholder="Search by title or author"
                 value={query}
                 onChange={this.handleChange}
