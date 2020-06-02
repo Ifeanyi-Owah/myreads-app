@@ -26,7 +26,7 @@ class BookSearch extends Component {
           const { query } = this.state;
           return setTimeout(() => {
             this.props.searchBookUpdate(query);
-          }, 200);
+          }, 250);
         }
       );
     } else {
@@ -38,7 +38,7 @@ class BookSearch extends Component {
           const { query } = this.state;
           return setTimeout(() => {
             this.props.searchBookUpdate(query);
-          }, 200);
+          }, 250);
         }
       );
     }
